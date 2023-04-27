@@ -1,0 +1,49 @@
+@import url('./globals.css');
+.see-live {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    background-color: #1b1919;
+    bottom: -1px;
+    left: 0;
+  }
+
+  &:hover {
+    &::after {
+      width: 0%;
+    }
+    .arrow {
+      transform: rotate(0);
+    }
+  }
+  &.big {
+    &::after {
+      background-color: var(--primary);
+      @media (prefers-color-scheme: dark) {
+        & {
+          background-color: var(--secondary);
+        }
+      }
+    }
+    &:hover {
+      .arrow {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --secondary: #fff;
+//     --primary: #262833;
+//   }
+//   body {
+//     color: var(--secondary);
+//     background-color: var(--primary);
+//   }
+// }
+
