@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Inter } from 'next/font/google';
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useThemeCtx } from '@/context/themeCtx';
 import DraggableBoxes from '@/components/DraggableBoxes';
@@ -14,64 +14,69 @@ export default function Home() {
   const { theme } = useThemeCtx();
 
   useEffect(() => {
-    const root = document.documentElement;
-    root?.style.setProperty('--primary', theme.dark);
-    root?.style.setProperty('--secondary', theme.light);
+    if (theme) {
+      const root = document.documentElement;
+      root?.style.setProperty('--primary', theme.dark);
+      root?.style.setProperty('--secondary', theme.light);
+    }
   }, [theme]);
 
   return (
-    <main className={`h-screen grid items-center`}>
-      <div id='container' className='relative'>
-        <div className='absolute inset-0'>
-          {[
-            {
-              img: '',
-              keys: ['dev, web'],
-              name: 'Samton',
-              alt: '',
-              year: 2021,
-              x: '10vw',
-              y: '45vh',
-              a: '',
-            },
-            {
-              img: '',
-              keys: ['dev, web'],
-              name: 'Samton',
-              alt: '',
-              year: 2021,
-              x: '70vw',
-              y: '5vh',
-              a: '',
-            },
-            {
-              img: '',
-              keys: ['dev, web'],
-              name: 'Samton',
-              alt: '',
-              year: 2021,
-              x: '30vw',
-              y: '-45vh',
-              a: '',
-            },
-          ].map((item, key) => (
-            <DraggableBoxes {...{ ...item, id: key }} key={key} />
-          ))}
-        </div>
-
-        <h2 className='text-9xl  text -z-10' style={{ position: 'inherit' }}>
-          Hi! I am Faith and I find web development to be fascinating and love
-          the ability to transform designs into actual websites.
-        </h2>
+    <main
+      className={`grid items-center relative`}
+      id='container'
+      style={{ height: 'calc(100vh - 105px)' }}>
+      <div className='absolute inset-0'>
+        {[
+          {
+            img: '/assets/images/xx.png',
+            keys: ['dev, web'],
+            name: 'Samton',
+            alt: '',
+            year: 2021,
+            x: '10vw',
+            y: '45vh',
+            a: '',
+          },
+          {
+            img: '/assets/images/xx.png',
+            keys: ['dev, web'],
+            name: 'Samton',
+            alt: '',
+            year: 2021,
+            x: '70vw',
+            y: '5vh',
+            a: '',
+          },
+          {
+            img: '/assets/images/xx.png',
+            keys: ['dev, web'],
+            name: 'Samton',
+            alt: '',
+            year: 2021,
+            x: '30vw',
+            y: '-45vh',
+            a: '',
+          },
+        ].map((item, key) => (
+          <DraggableBoxes {...{ ...item, id: key }} key={key} />
+        ))}
       </div>
 
-      <div className='flex justify-end px-4 '>
-        <button className=' relative after:transition-all after:duration-400 after:h-2 w-max text-9xl see-live big'>
+      <h2
+        className='text-9xl 2xl:text-[9rem] 2xl:leading-[.9] text -z-10 px-9'
+        style={{ position: 'inherit' }}>
+        Hi! I am Faith and I find web development to be fascinating and love the
+        ability to transform designs into actual websites.
+      </h2>
+
+      <div className='flex justify-end px-9 z-[4000]'>
+        <button className=' after:duration-400 after:!h-2 w-max text-9xl see-live big after'>
           <span className='flex items-center '>
             Learn more
             <AiOutlineArrowRight className=' arrow transition-all duration-200' />
           </span>
-          <Link href={''} className='absolute inset-0 z-[4000]'></Link>
+          <Link href={''} className='absolute inset-0 '></Link>
         </button>
       </div>
 

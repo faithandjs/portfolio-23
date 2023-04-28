@@ -3,20 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --primary: #fff;
-  --secondary: #262833;
+  --primary: #dcdcdc;
+  --secondary: #dcdcdc;
 }
-
+/* //262833 */
 body {
   color: var(--primary);
   background-color: var(--secondary);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --secondary: #fff;
-    --primary: #262833;
-  }
   body {
     color: var(--secondary);
     background-color: var(--primary);
