@@ -40,6 +40,13 @@
   z-index: -1 !important;
 }
 
+section {
+  @apply py-9 px-7;
+}
+p {
+  @apply py-2 text-lg;
+}
+
 //NAVBAR
 nav li.after {
   &::after {
